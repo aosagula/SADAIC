@@ -1,0 +1,143 @@
+/******************* HELPERS *********************/
+
+
+/******* COLOR TEXTOS *******/
+
+
+
+.color-darker-blue {color:#121c36;}
+.color-dark-blue   {color:#1e3462;}
+.color-blue        {color:#00baff;}
+.color-green       {color:#50ffd4;}
+.color-red         {color:#d81b60 !important;}
+.color-gray-800    {color:#363636 !important;}
+.color-gray-700    {color:#4d5a64;}
+.color-gray-600    {color:#85898a;}
+.color-gray-500    {color:#7e8b92;}
+.color-gray-400    {color:#b3bdc3;}
+.color-gray-300    {color:#d0d7db;}
+.color-gray-200    {color:#e0e0e0;}
+.color-gray-100    {color:#eceef0;}
+.color-white       {color:#ffffff;}
+
+
+/******* COLOR BACKGROUND *******/
+
+.bg-darker-blue {background-color:#121c36;}
+.bg-dark-blue   {background-color:#1e3462;}
+.bg-var-blue    {background-color:#00a5e3;}
+.bg-blue        {background-color:#00baff;}
+.bg-green       {background-color:#50ffd4 !important;}
+.bg-red         {background-color:#d81b60;}
+.bg-gray-800    {background-color:#363636;}
+.bg-gray-700    {background-color:#4d5a64;}
+.bg-gray-600    {background-color:#85898a;}
+.bg-gray-500    {background-color:#7e8b92;}
+.bg-gray-400    {background-color:#b3bdc3;}
+.bg-gray-300    {background-color:#d0d7db!important;}
+.bg-gray-200    {background-color:#e0e0e0!important;}
+.bg-gray-100    {background-color:#eceef0;}
+.bg-white       {background-color:#ffffff;}
+.bg-transparent {background-color:transparent;}
+
+.fill-darker-blue {fill:#121c36;}
+.fill-dark-blue   {fill:#1e3462;}
+.fill-blue        {fill:#00baff;}
+
+.line-height-05  {line-height: 0.5;}
+.line-height-1  {line-height: 1;}
+.no-line-height  {line-height: inherit;}
+.line-height-2  {line-height: 2;}
+
+.no-wrap {white-space: nowrap;}
+.wrap {white-space: normal;}
+.no-transition {transition: none;}
+.no-text-decoration:hover { text-decoration: none;}
+
+.pointer {cursor: pointer;}
+
+.link {color: $blue; }
+.link:hover {text-decoration: none; color: $dark-blue; cursor: pointer; }
+.card-link {text-decoration: none; color:initial;}
+.card-link:hover {text-decoration: none;}
+.disable-period {filter: grayscale(100%) !important; opacity: 0.4;}
+.disabled {pointer-events:none; background-color:#f5f5f5;  }
+
+.fw-n { font-family: 'roboto'; font-weight: normal;}
+.fw-m { font-family: 'roboto-medium'; font-weight: normal;}
+.fw-l { font-family: 'roboto-light'; font-weight: lighter;}
+.fs-10 { font-size: 0.65rem;}
+.fs-12 { font-size: 0.75rem;}
+.fs-14 { font-size: 0.88rem;}
+.fs-12px { font-size: 12px;}
+.fs-16 { font-size: 1rem;}
+.fs-20 { font-size: 1.25rem;}
+.fs-24 { font-size: 1.5rem;}
+.fs-32 { font-size: 2rem;}
+.fs-36 { font-size: 2.25rem;}
+.fs-40 { font-size: 2.5rem;}
+.num-strech-1 {letter-spacing: -1px;}
+.num-strech-2 {letter-spacing: -2px;}
+
+.icon {width: 20px; margin: 8px;}
+.icon-xs{width: 30px;margin: 4px;}
+.icon-sm{width: 40px;}
+.icon-normal{width: 60px;}
+.icon-md{width: 80px;}
+.icon-lg{width: 100px;}
+.icon-recovery {width: 120px;}
+.icon-recovery-single {width: 160px;}
+
+
+.opacity-05 { opacity: 0.5;}
+.trans-05 {transition: all 0.5s}
+.trans-1 {transition: all 1s}
+.rotate-180 {transform: rotateZ(180deg) !important;}
+.rotate-90 {transform: rotateZ(90deg) !important;}
+.rotate-r90 {transform: rotateZ(-90deg) !important;}
+#side_bar.translate-0 { transform: translateX(0px);}
+
+.mt-6 {margin-top: 3.5rem !important;}
+.mt-7 {margin-top: 4rem !important;}
+.mt-8 {margin-top: 4.5rem !important;}
+
+.w-80 {width:80%;}
+.w-35 {width:35%;}
+.w-45 {width:45%;}
+.w-150px {width:150px; min-width:100px;}
+
+
+
+.nav-collapse { width: 53px; }
+.nav-collapse nav ul li .text-nav {display: none !important;}
+.margin-left-collapse {margin-left:5% !important;}
+.main-collapse {width: 93% ; margin-left: 7%;}
+.centrar-icon-collapse {margin-left: 0px; display:flex; justify-content: center;}
+
+.border-25::after {
+    content: " ";
+    border-bottom: 5px solid $blue;
+    width: 50px;
+    margin-top: 8PX;
+    display: block;
+}
+
+.active-radio {
+    color: $blue;
+}
+
+.accordion-active {
+    background-color: #1e3462;
+    color: white;
+}
+
+.monto-deuda-cu {
+    width: 130px;
+    display: inline-block;
+    text-align: right;
+
+}
+
+.input-border-0 {border-width: 0 0 4px 0;}
+
+

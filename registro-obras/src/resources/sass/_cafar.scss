@@ -1,0 +1,129 @@
+
+/*INICIO CAFAR*/
+
+/*HEADER*/
+
+.salir-out {border-left:2px solid $green-water;}
+.a-salir {padding:0px 15px 0px 30px;color: #b9215e; font-weight: bold;}
+.a-salir:hover {background: $green-water; text-decoration: none; color: #fff!important;}
+.a-salir .icon-svg {fill:#b9215e !important; transition: .4s;}
+.a-salir:hover .icon-svg {fill:white !important;}
+
+
+/*SIDENAV*/
+.title-nav {color: white}
+.nav-icon .icon-svg {fill:$brown}
+.user {cursor: pointer; }
+
+
+
+/*DASHBOARD ACTIVO*/
+/*BOTONES*/
+.btn-blue {background: $brown; padding: 10px 20px; color: white; display: inline-block;text-align: center; text-transform: uppercase; font-size: 13px}
+.btn-blue:hover {background: $brown-2; color: white; text-decoration: none;}
+
+
+
+/*********DASHBOARD*********/
+.dashboard h1 {color: $green-green}
+.dashboard h2 {font-size:35px;}
+.dashboard h3 {font-size: 18px; color: #000}
+
+/*INFO*/
+.info-principal {background: #f2f2f2;}
+.info-principal h4 {font-size: 16px; color: #000}
+
+/*Datos*/
+.v-aportes, .cuota-v {border-right: 2px solid #dee2e6}
+.v-aportes span {color: $green-water; font-weight: bold; font-size: 18px } 
+
+
+/*CUADROS*/
+/*Cuenta Corriente*/
+.cuadro-cc .row:first-child {background: $green-water-2; padding: 10px; }
+.cuadro-cc .row:first-child p:first-child {color:$brown}
+.cc-icon span {display:inline-block;background:$brown; width:50px; height: 50px; font-size: 20px; line-height: 50px;text-align: center; font-weight: bold;color:#fff;}
+.cuadro-cc h4 {font-size: 15px; text-transform: uppercase; font-weight: bold}
+.cuadro-cc .row {padding:10px;}
+.cuadro-cc .row p{margin-bottom: 0px}
+.row-gris {background:#f2f2f2;}
+.pendiente {color:red;}
+.d-br {display: none}
+.green {color: $green-green}
+
+
+/*Valor Módulo*/
+.row-modulo {padding: 15px 10px; background:#f2f2f2}
+.row-modulo img, .row-notificacion img{width: 50px;}
+.row-modulo h3 {color:white; font-size: 16px; padding: 10px}
+.row-modulo h3+p {font-size: 30px; color:$brown; font-weight: bold }
+
+/*Notificación*/
+.row-notificacion .row:first-child {background:$green-water-2; padding: 15px 10px}
+.row-notificacion h3 {color: $brown}
+.row-notificacion a {display: inline-block;}
+
+
+
+@media screen and (max-width: 1200px){
+
+
+	/*Cuadro CC*/
+	.d-br {display: block}
+
+	/*Valor Módulo*/
+	.row-modulo h3 {font-size: 13px;line-height: 15px}
+	.row-modulo h3+p {font-size: 20px;}
+
+	/*Notificación*/
+	.row-notificacion h3 {font-size: 16px!important}
+}
+
+@media screen and (max-width: 767px){
+
+	#content {margin-top:44px!important;}
+
+	/*Datos*/
+	.v-aportes, .cuota-v {border-right:none;border-bottom: 1px solid #dee2e6;}
+	.v-aportes, .cuota-v, .saldo-d {padding-bottom: 25px}
+
+
+	/*Cuadro CC*/
+	.d-br {display: none}
+
+
+	/*Notificación*/
+	.row-notificacion h3 {margin-top: 15px}
+}
+
+
+@media screen and (max-width: 575px){
+header .cafar-logo {
+    width: 150px;}
+
+    .header-nombre {text-align: right}
+    .header-nombre span {font-size: 11px; }
+
+    .circle {height: 30px; width: 30px}
+
+   #side_bar {
+   	top:66px!important;
+   }
+
+   #content {margin-top:75px!important;}
+   
+
+.cuadro-cc h4 {font-size: 13px}
+.user-out {background: #f2f2f2}
+
+}
+
+
+@media screen and (max-width: 375px){
+
+	/*Cuenta Corriente*/
+	.cc-icon span {width: 40px; height: 40px; font-size: 16px; line-height: 40px}
+
+	/*Notificación*/
+	.row-notificacion h3 {margin-top: 5px}
+}

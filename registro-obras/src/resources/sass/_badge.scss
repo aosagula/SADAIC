@@ -1,0 +1,43 @@
+/******* BADGET ******/
+
+
+
+.badge         { padding: 6px 8px; white-space: normal; font-weight: normal;margin: 8px; font-size:10px; color: #fff; text-transform: uppercase;}
+.badge-dark-blue { background-color: $dark-blue; }
+.badge-var-blue { background-color: $blue-var; }
+.badge-primary { background-color: $blue; }
+.badge-success { background-color: $green-water; color: white; }
+.badge-info    { background-color: $gray-400; }
+.badge-warning  { background-color: $red; }
+.badge-light   { background-color: #fff; color: $darker-blue; border:2px solid $gray-100; }
+
+.badge.check {
+  padding-right: 12px;
+}
+
+.check{
+  display:inline-block;
+
+  &:after{
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    margin-left: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}
+
+
+.icon-header-page {
+    fill : $blue;
+    width: 70px;
+    height: auto;
+}
+
+.icon-animated {
+  width: 11.25rem;
+  height: 12rem;
+}

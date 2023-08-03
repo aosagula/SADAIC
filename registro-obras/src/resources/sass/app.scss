@@ -1,0 +1,37 @@
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+@import '~datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css';
+@import '~@chenfengyuan/datepicker/dist/datepicker.min.css';
+@import 'toastr';
+@import 'select2';
+
+@import 'base';
+
+@import 'fonts';
+@import 'fontawesome';
+
+@import 'badge';
+@import 'cafar';
+@import 'dashboard';
+@import 'header';
+@import 'helpers';
+@import 'queries';
+@import 'sidenav';
+@import 'embed';
+@import 'forms';
+@import 'login';
+
+aside nav#navmain ul li.active {
+    background-color: #018e49;
+
+    a {
+        color: white !important;
+    }
+}
+
+// Altura automática en los "controles" en las vistas de formularios
+div.form-control {
+    min-height: $input-height;
+    height: auto;
+}

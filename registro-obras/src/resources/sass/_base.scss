@@ -1,0 +1,63 @@
+/*************************** BASE *****************************/
+
+html, body,h1, h2, h3, h4, h5, h6, p {
+  font-family: 'roboto';
+}
+
+h4 {
+  margin: 1rem auto;
+  
+}
+
+
+.circle {
+  background-color: $green-water;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.8;
+  padding: 0.8rem;
+  color: #fff;
+}
+
+.xs-circle {
+  @extend .circle;
+  font-size: 0.75rem;
+  width: 35px;
+  height: 35px;
+}
+
+#main {
+  transition: all 0.5s;
+  padding-bottom: 80px;
+  margin-top: 80px;
+  margin-left: 25vw;
+  padding-top: 1em;
+
+  @media screen and (max-width: 991px) {
+    margin-left: 1em;
+    margin-top: 127px;
+    padding-top: 2em;
+  }
+}
+
+li:hover, a:hover {
+  transition: 0.4s
+}
+
+.close {
+  opacity: 1;
+}
+
+.alert {
+  border-radius: 0px;
+}
+
+.card-header:first-child {
+  border-radius: 0px;
+}
+

@@ -1,0 +1,116 @@
+/******************* HEADER *********************/
+header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 3;
+  min-height: 81px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid $gray-300;
+
+  .dropdown-menu {
+    min-width: 18rem;
+    margin: 1rem 0 0;
+    border-radius: 0;
+    border: 0;
+  }
+
+  .dropdown-item:hover {
+    background-color: $blue;
+  }
+
+  .dropdown-item:hover i {
+    color: white;
+    transition: 0.4s;
+  }
+
+  .cafar-logo {
+    width: 139px;
+    height: 50px;
+  }
+
+  #menu_hamb{
+
+    display:inline-block;
+    margin: -8px -35px 0px 0px ;
+    position: relative;
+      padding:10px;
+    cursor:pointer;
+  }
+
+  .main-item {
+    width:12px;
+    height:10px;
+    // position:relative;
+  }
+
+  .line {
+    position: absolute;
+    height: 5px;
+    width:100%;
+    background:$dark-blue;
+    border-radius:10px;
+    transition: all ease 0.32s;
+  }
+
+  .line01 {
+    top:19%;
+  }
+
+  .line02 {
+    top:49%;
+  }
+
+  .line03 {
+    top:79%;
+  }
+
+  .menu-hamb.close-hamb .line01 {
+    transform:rotate(45deg);
+    top:49%;
+  }
+
+  .menu-hamb.close-hamb .line02, .menu-hamb.close-hamb .line03 {
+    transform:rotate(-45deg);
+    top:49%;
+  }
+
+}
+
+#gc header .dropdown-item:hover i {
+  color:$blue;
+}
+
+.ofic-virtual {
+  font-weight: bold;
+  color: $brown;
+  font-size: 18px;
+
+  border-left: 2px solid $green-water ;
+  padding-bottom: 2px;
+}
+
+.num-sumistro {
+  font-size: 14px;
+  color: $dark-blue;
+  margin-top: -3px;
+}
+
+
+
+.gc-num-sumistro {
+  @extend .num-sumistro;
+  color: $gray-600;
+}
+
+.notificacion {
+  border-left: 1px solid $gray-200;
+  border-right: 1px solid $gray-200;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.header-nombre span:first-child {color: $green-water}

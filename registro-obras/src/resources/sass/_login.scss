@@ -1,0 +1,345 @@
+#start {
+  background-color: #F2F2F2;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+
+  .login {
+    font-family: 'Roboto';
+    background-color: white;
+    padding: 2rem;
+    padding-bottom: 4rem;
+
+    .logo {
+      margin-top: 1rem;
+      width: 15rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #029044;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.1rem;
+    }
+
+    p {
+      margin-bottom: 5rem;
+    }
+
+    #loginSelection {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      #loginSocios img {
+        padding-bottom: 3px;
+      }
+
+      #loginUsuarios img {
+        padding-bottom: 2px;
+      }
+
+      li {
+        display: inline-block;
+        background-color: #F2F2F2;
+        border-radius: 50%;
+        height: 120px;
+        width: 120px;
+        margin: 0 2rem;
+        cursor: pointer;
+        margin-bottom: 2rem;
+
+        &:hover {
+          box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.24);
+        }
+
+        img {
+          position: relative;
+          top: 24px;
+        }
+
+        span {
+          display: block;
+          position: relative;
+          top: 24px;
+          font-weight: bold;
+          color: #4F1012;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  .register {
+    background-color: #F2F2F2;
+    padding: 4rem;
+
+    h3 {
+      font-weight: bolder;
+      color: #520203;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      margin: 1rem 0;
+      padding: .75rem 4rem;
+      color: #F2F2F2;
+      background-color: #1A4F25;
+      border-radius: 0;
+      font-size: .7rem;
+      font-weight: bold;
+      letter-spacing: .1rem;
+      transform: scaleX(1.1);
+    }
+  }
+}
+
+
+.step2 {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto';
+  overflow-y: auto;
+  display: none;
+
+  .goBack {
+    cursor: pointer;
+  }
+
+  .left-side {
+    color: white;
+    background-color: #99d2b6;
+    text-align: center;
+    padding-bottom: calc(60px + 2rem);
+
+    p {
+      font-size: 1rem;
+      margin: 2rem 5rem;
+    }
+  }
+
+  .content {
+    .badge {
+      background-color: white;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.14);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin: 0;
+      top: -60px;
+      transform: translateX(calc(50vw - 60px));
+    }
+
+    .header {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.5rem;
+      margin: 0rem 2rem;
+
+      img {
+        vertical-align: top;
+      }
+    }
+
+    .formWrapper {
+      margin: 0 2rem;
+      padding: 2rem;
+      background-color: #f2f2f2;
+      box-shadow: 0 -1px 7px 1px rgba(47, 47, 47, 0.21);
+
+      a {
+        color: black;
+      }
+
+      .formInput {
+        display: flex;
+        align-items: center;
+        padding: 0 1rem .5rem 1rem;
+        margin-bottom: 1.5rem;
+        border-bottom: solid 1px #601819;
+      }
+
+      label {
+        margin: 0;
+        margin-right: 1rem;
+
+        img {
+          position: relative;
+          top: -1px;
+        }
+      }
+
+      .rememberMeCheck {
+        display: flex;
+        align-items: center;
+      }
+
+      .passwordRequest {
+        text-align: right;
+      }
+
+      button[type="submit"] {
+        margin-top: 1rem;
+        padding: .75rem 4rem;
+        color: #F2F2F2;
+        background-color: #520203;
+        border-radius: 0;
+        font-size: .7rem;
+        font-weight: bold;
+        letter-spacing: .1rem;
+        transform: scaleX(1.1);
+      }
+
+      input {
+        background-color: transparent;
+        border: none;
+        font-size: 15px;
+        color: #601819;
+
+        &::placeholder {
+          color: #601819;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+
+      input[type="password"], input[type="text"], input[type="email"] {
+        width: 100%;
+      }
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        box-shadow: 0 0 0 30px #f2f2f2 inset !important;
+      }
+    }
+  }
+
+  @media (min-width: 576px) {
+    .left-side {
+      p {
+        font-size: 1.5rem;
+        margin: 2rem 25vw;
+      }
+    }
+
+    .goBack {
+      font-size: 1.5rem;
+    }
+
+    .content {
+      .header {
+        font-size: 2rem;
+        margin: 0rem 15vw;
+      }
+
+      .formWrapper {
+        margin: 0 15vw;
+
+        img {
+          height: 20px;
+          width: 20px;
+        }
+
+        input {
+          font-size: 20px;
+        }
+
+        .rememberMeCheck label, .passwordRequest .btn {
+          font-size: 1.25rem;
+        }
+
+        .rememberMeCheck label::before {
+          top: .5rem;
+        }
+
+        button[type="submit"] {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+    flex-direction: row;
+
+    .left-side {
+      height: 100vh;
+      width: 45vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+      padding-top: calc(20vh + 120px + 1rem);
+
+      img {
+        margin: 0 20% 1.5rem 20%;
+      }
+
+      p {
+        font-size: 1rem;
+        margin: 0 20% 1.5rem 20%;
+      }
+
+      .goBack {
+        font-size: .8rem;
+        margin: 0 20%;
+        text-transform: uppercase;
+      }
+    }
+
+    .content {
+      width: 55vw;
+      padding-top: 20vh;
+
+      .badge {
+        position: absolute;
+        left: calc(45vw - 60px);
+        top: 120vh;
+        transform: none;
+      }
+
+      .header {
+        font-size: 2rem;
+        margin: 0rem 10vw;
+      }
+
+      .formWrapper {
+        margin: 0 10vw;
+
+        img {
+          height: 15px;
+          width: 15px;
+        }
+
+        input {
+          font-size: 15px;
+        }
+
+        .rememberMeCheck label, .passwordRequest .btn {
+          font-size: .8rem;
+        }
+
+        .rememberMeCheck label::before {
+          top: .22rem;
+        }
+
+        button[type="submit"] {
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+vendor
+docker-compose.*
+node_modules
+storage\framework\cache
+
+

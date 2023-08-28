@@ -7,6 +7,7 @@ use App\Models\Work\Registration as WorkRegistration;
 use App\Models\Jingles\Registration as JingleRegistration;
 use App\Models\Members\Registration as MemberRegistration;
 use Illuminate\Http\Request;
+use DateTime;
 
 class IntegrationController extends Controller
 {
@@ -20,10 +21,15 @@ class IntegrationController extends Controller
         return view('integration.index');
     }
 
+    /**
+     *  2023.08.28 - Alejandro Sagula
+     *  Add new attribute called otherTitles, 
+     *  an array with subtitles when exists
+     */
     public function exportWorks()
     {
-        $works = WorkRegistration::where('status_id', 6)->get();
-
+        $works = WorkRegistration::where('status_id', 6)->with('titles')->get();
+        
         $works_data = $works->map(function(WorkRegistration $work) {
             $interestedParties = $work->distribution->map(function(Distribution $dist) {
                 $porcentPer = str_pad($dist->public * 100, 5, '0', STR_PAD_LEFT);
@@ -59,10 +65,21 @@ class IntegrationController extends Controller
                 }
             });
 
+            /**
+             *  Add this lines
+             */
+            $unpublishedDate = ($work->dnda_in_date) ? (new DateTime($work->dnda_in_date))->format('Y-m-d') : null;
+            $editedDate = ($work->dnda_ed_date) ? (new DateTime($work->dnda_ed_date))->format('Y-m-d') : null;
+            
+        
+
             $data = [
                 'submissionId'      => $work->id,
                 'agency'            => '128',
                 'originalTitle'     => $work->title,
+                'otherTitles'       =>  $work->titles->map(function($t){
+                    return $t->title;
+                }),
                 'albumTitle'        => $work->dnda_title,
                 'genre'             => $work->genre_id,
                 'duration'          => $work->duration,
@@ -70,10 +87,10 @@ class IntegrationController extends Controller
                 'musicMovies'       => $work->is_movie == 1 ? 'S' : 'N',
                 'unpublishedDndaNumberLetter' => intval($work->lyric_dnda_in_file),
                 'unpublishedDndaNumberMusic' => intval($work->audio_dnda_in_file),
-                'unpublishedDate' => $work->dnda_in_date,
+                'unpublishedDate' => $unpublishedDate , #$work->dnda_in_date,
                 'editedDndaNumberLetter' => intval($work->lyric_dnda_ed_file),
                 'editedDndaNumberMusic' => intval($work->audio_dnda_ed_file),
-                'editedDate' => $work->dnda_ed_date,
+                'editedDate' =>  $editedDate, # $work->dnda_ed_date,
                 'interestedParties' => $interestedParties,
                 'sheetMusicFile' => $sheetMusicFile,
                 'audioFile' => $audioFile

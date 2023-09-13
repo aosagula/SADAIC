@@ -30,7 +30,23 @@ class FileController extends Controller
         if (!Storage::exists($file->path)) {
             abort(404);
         }
+        
+        return Storage::download($file->path);
+    }
+    /**
+     * Author: A Sagula
+     * Data: 2023/09/09
+     * Request: Method to download a file in order to include in the works.json
+     */
+    public function apiDownloadFile(File $file)
+    {
+        
 
+        if (!Storage::exists($file->path)) {
+            abort(404);
+        }
+        #return Storage::url($file->path);
+        #return url('/');
         return Storage::download($file->path);
     }
 
@@ -111,10 +127,18 @@ class FileController extends Controller
                 Storage::makeDirectory($filePath);
             }
 
+            /**
+             *   Autor: A. Sagula
+             *   Date: 2023.09.08
+             *   Request: add registration id on the storage path.
+             */
+            $parts = pathinfo($fileName);
+            $new_filename = $parts['filename'].'-'.$registration->id.'.'.$parts['extension'];
+
             $path = Storage::putFileAs(
                 $filePath,
                 $request->file('file'),
-                $fileName
+                $new_filename
             );
 
             // Creamos el registro del archivo

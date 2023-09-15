@@ -36858,7 +36858,7 @@ rotation:-Math.PI}});
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/dashboard.js */"./resources/js/dashboard.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/}

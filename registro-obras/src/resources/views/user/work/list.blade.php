@@ -49,7 +49,7 @@
                             <td class="text-center">Registro Rechazado</td>
                             @endif
                         @else
-                        <td class="text-center">{{ optional($request->status)->name }}</td>
+                        <td class="text-center">{{ $request->codwork?optional($request->status)->name.' - '.$request->codwork:optional($request->status)->name }}</td>
                         @endif
 
                         {{-- Si es el iniciador y todavía no se envió la solicitud, se puede editar --}}

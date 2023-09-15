@@ -140,7 +140,9 @@ return row.is_movie?'Si':'No';
 }},
 {
 name:'status_id',
-data:'status.name'},
+data:function data(row){
+return row.codwork?row.status.name+'<br>'+row.codwork:row.status.name;
+}},
 {
 orderable:false,
 data:null,
@@ -193,7 +195,7 @@ row.child(details(row.data())).show();
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/works.index.js */"./resources/js/works.index.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/works.index.js */"./resources/js/works.index.js");
 
 
 /***/}

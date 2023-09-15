@@ -157,7 +157,7 @@ $dt.column('status_id:name').search(event.target.value).draw();
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/members.index.js */"./resources/js/members.index.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/members.index.js */"./resources/js/members.index.js");
 
 
 /***/}

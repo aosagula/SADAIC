@@ -1,0 +1,464 @@
+{
+    "$schema": "./work_schema.json",
+    "fileHeader": {
+        "submittingAgency": "128",
+        "fileCreationDateTime": "2023-08-16T11:48:23.131659-03",
+        "receivingAgency": "061"
+    },
+    "addWorks": [
+        {
+            "submissionId": 5,
+            "agency": "128",
+            "originalTitle": "obra 1 con diego rodriguez",
+            "albumTitle": "album 1 de dr",
+            "genre": 503,
+            "duration": "3.45",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 15,
+            "unpublishedDndaNumberMusic": 0,
+            "unpublishedDate": null,
+            "editedDndaNumberLetter": 16,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [
+                {
+                    "nameNumber": 261474274,
+                    "name": "Payaguala Hector Oscar",
+                    "role": "CA",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 05000
+                },
+                {
+                    "nameNumber": 260370983,
+                    "name": "Ceschi Felix Omar",
+                    "role": "CA",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 05000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/members/2/work-registration/5/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/members/2/work-registration/5/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 17,
+            "agency": "128",
+            "originalTitle": "obra 4 sol",
+            "albumTitle": "album 4",
+            "genre": 500,
+            "duration": "12.23",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 0,
+            "unpublishedDndaNumberMusic": 0,
+            "unpublishedDate": null,
+            "editedDndaNumberLetter": 0,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [
+                {
+                    "nameNumber": 260128891,
+                    "name": "Castro Jose Miguel",
+                    "role": "CA",
+                    "porcentPer": 02500,
+                    "porcentMec": 07500,
+                    "porcentSyn": 07500
+                },
+                {
+                    "nameNumber": 243071697,
+                    "name": "Falu Alfredo Juan",
+                    "role": "CA",
+                    "porcentPer": 07500,
+                    "porcentMec": 02500,
+                    "porcentSyn": 02500
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/17/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/17/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 22,
+            "agency": "128",
+            "originalTitle": "Primer obra Laura",
+            "albumTitle": "Primer obra Laura",
+            "genre": 121,
+            "duration": "5.30",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 1234567890,
+            "unpublishedDndaNumberMusic": 1234567890,
+            "unpublishedDate": "2023-01-01",
+            "editedDndaNumberLetter": 0,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [
+                {
+                    "nameNumber": 99999999999,
+                    "name": "Rojas Laura",
+                    "role": "CA",
+                    "porcentPer": 10000,
+                    "porcentMec": 10000,
+                    "porcentSyn": 10000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/22/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/22/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 24,
+            "agency": "128",
+            "originalTitle": "Segunda prueba Laura",
+            "albumTitle": "Segunda prueba Laura",
+            "genre": 611,
+            "duration": "4.10",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 1234567890,
+            "unpublishedDndaNumberMusic": 1234567890,
+            "unpublishedDate": "2023-02-01",
+            "editedDndaNumberLetter": 0,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [
+                {
+                    "nameNumber": 99999999999,
+                    "name": "Rojas Laura",
+                    "role": "CA",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 05000
+                },
+                {
+                    "nameNumber": 261788635,
+                    "name": "Palazzo Jose Domingo",
+                    "role": "CA",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 05000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/24/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/24/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 25,
+            "agency": "128",
+            "originalTitle": "Tercera prueba Laura",
+            "albumTitle": "Tercera prueba Laura",
+            "genre": 121,
+            "duration": "6.30",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 1234567890,
+            "unpublishedDndaNumberMusic": 1234567890,
+            "unpublishedDate": "2023-01-01",
+            "editedDndaNumberLetter": 0,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [
+                {
+                    "nameNumber": 99999999999,
+                    "name": "Rojas Laura",
+                    "role": "A",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 05000
+                },
+                {
+                    "nameNumber": 99999999999,
+                    "name": "Fernandez Noelia",
+                    "role": "C",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 05000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/25/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/25/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 28,
+            "agency": "128",
+            "originalTitle": "Cuarta Prueba Laura",
+            "albumTitle": "Sin álbum",
+            "genre": 121,
+            "duration": "5.30",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 12345678,
+            "unpublishedDndaNumberMusic": 12345678,
+            "unpublishedDate": "2023-01-01",
+            "editedDndaNumberLetter": 0,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [
+                {
+                    "nameNumber": 99999999999,
+                    "name": "Rojas Laura",
+                    "role": "CA",
+                    "porcentPer": 04200,
+                    "porcentMec": 04200,
+                    "porcentSyn": 04200
+                },
+                {
+                    "nameNumber": 99999999999,
+                    "name": "Turco Nora",
+                    "role": "CA",
+                    "porcentPer": 05800,
+                    "porcentMec": 05800,
+                    "porcentSyn": 05800
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/28/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/28/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 32,
+            "agency": "128",
+            "originalTitle": "prueba para ale",
+            "albumTitle": "vamos todavia",
+            "genre": 500,
+            "duration": "03.25",
+            "jingle": "S",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 123,
+            "unpublishedDndaNumberMusic": 1234,
+            "unpublishedDate": "2022-01-01",
+            "editedDndaNumberLetter": 456,
+            "editedDndaNumberMusic": 4567,
+            "editedDate": "2022-12-15",
+            "interestedParties": [
+                {
+                    "nameNumber": 23587288,
+                    "name": "Passera Carlos E",
+                    "role": "C",
+                    "porcentPer": 04000,
+                    "porcentMec": 04000,
+                    "porcentSyn": 04000
+                },
+                {
+                    "nameNumber": 23588579,
+                    "name": "Passerini Amalia C De",
+                    "role": "A",
+                    "porcentPer": 06000,
+                    "porcentMec": 06000,
+                    "porcentSyn": 06000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/32/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/32/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 33,
+            "agency": "128",
+            "originalTitle": "Obra prueba 7/8",
+            "albumTitle": "Testing Machine",
+            "genre": 121,
+            "duration": "5",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 0,
+            "unpublishedDndaNumberMusic": 0,
+            "unpublishedDate": null,
+            "editedDndaNumberLetter": 0,
+            "editedDndaNumberMusic": 0,
+            "editedDate": null,
+            "interestedParties": [],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.jpg",
+                "filePath": "files/users/14/work-registration/33/lyric_file.jpg"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/33/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 34,
+            "agency": "128",
+            "originalTitle": "PRUEBA ALEJANDRO",
+            "albumTitle": "TITULO ALEJANDRO",
+            "genre": 121,
+            "duration": "05.20",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 1234,
+            "unpublishedDndaNumberMusic": 123456,
+            "unpublishedDate": "2023-08-16",
+            "editedDndaNumberLetter": 5678,
+            "editedDndaNumberMusic": 56789,
+            "editedDate": "2023-08-01",
+            "interestedParties": [
+                {
+                    "nameNumber": 71456285,
+                    "name": "Fernandez Roberto",
+                    "role": "C",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 10000
+                },
+                {
+                    "nameNumber": 24121537,
+                    "name": "Petillo Raimundo",
+                    "role": "AR",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 00000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/34/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/34/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 35,
+            "agency": "128",
+            "originalTitle": "ALEJANDRO MUSICA EN PUBLICIDAD",
+            "albumTitle": "MUSICA EN PUBLICIDAD",
+            "genre": 594,
+            "duration": "5",
+            "jingle": "S",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 1111111111,
+            "unpublishedDndaNumberMusic": 22222222,
+            "unpublishedDate": "2023-08-09",
+            "editedDndaNumberLetter": 333333,
+            "editedDndaNumberMusic": 44444,
+            "editedDate": "2023-08-16",
+            "interestedParties": [
+                {
+                    "nameNumber": 24121537,
+                    "name": "Petillo Raimundo",
+                    "role": "A",
+                    "porcentPer": 10000,
+                    "porcentMec": 10000,
+                    "porcentSyn": 10000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/35/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/35/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 36,
+            "agency": "128",
+            "originalTitle": "ALEJANDRO MUSICA EN PRODUCCION AUDIOVISUAL",
+            "albumTitle": "MUSICA EN PRODUCCION AUDIOVISUAL",
+            "genre": 594,
+            "duration": "10",
+            "jingle": "N",
+            "musicMovies": "S",
+            "unpublishedDndaNumberLetter": 999999999,
+            "unpublishedDndaNumberMusic": 8888888888,
+            "unpublishedDate": "2023-08-06",
+            "editedDndaNumberLetter": 222222222,
+            "editedDndaNumberMusic": 11111111111111,
+            "editedDate": "2023-07-10",
+            "interestedParties": [],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/36/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/36/audio_file.mp3"
+            }
+        },
+        {
+            "submissionId": 37,
+            "agency": "128",
+            "originalTitle": "ALEJANDRO MUSICA REGULAR",
+            "albumTitle": "alejandro",
+            "genre": 501,
+            "duration": "3.2",
+            "jingle": "N",
+            "musicMovies": "N",
+            "unpublishedDndaNumberLetter": 2323232323,
+            "unpublishedDndaNumberMusic": 234234345345,
+            "unpublishedDate": "2023-08-16",
+            "editedDndaNumberLetter": 7876876,
+            "editedDndaNumberMusic": 12312,
+            "editedDate": "2023-07-04",
+            "interestedParties": [
+                {
+                    "nameNumber": 71456285,
+                    "name": "Fernandez Roberto",
+                    "role": "AD",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 10000
+                },
+                {
+                    "nameNumber": 10317054,
+                    "name": "Fittipaldi Carlos Antonio",
+                    "role": "A",
+                    "porcentPer": 05000,
+                    "porcentMec": 05000,
+                    "porcentSyn": 00000
+                }
+            ],
+            "sheetMusicFile": {
+                "fileName": "lyric_file.pdf",
+                "filePath": "files/users/14/work-registration/37/lyric_file.pdf"
+            },
+            "audioFile": {
+                "fileName": "audio_file.mp3",
+                "filePath": "files/users/14/work-registration/37/audio_file.mp3"
+            }
+        }
+    ]
+}

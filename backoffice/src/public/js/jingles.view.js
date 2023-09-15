@@ -282,7 +282,7 @@ toastr.error('Se encontró un problema mientras se guardaban las observaciones')
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/jingles.view.js */"./resources/js/jingles.view.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/jingles.view.js */"./resources/js/jingles.view.js");
 
 
 /***/}

@@ -7,10 +7,13 @@ use App\Models\Work\Registration as WorkRegistration;
 use App\Models\Jingles\Registration as JingleRegistration;
 use App\Models\Members\Registration as MemberRegistration;
 use Illuminate\Http\Request;
+
+use App\Traits\FileTrait;
 use DateTime;
 
 class IntegrationController extends Controller
 {
+    use FileTrait;
     public function __construct()
     {
         $this->middleware('auth');
@@ -53,7 +56,7 @@ class IntegrationController extends Controller
                 if ($file->name == 'lyric_file') {
                     $fileName = explode('/', $file->path);
                     $sheetMusicFile->fileName = $fileName[count($fileName) - 1];
-                    $sheetMusicFile->filePath = $file->path;
+                    $sheetMusicFile->filePath = $this->addUrlFile($file->path);
                 }
             });
 
@@ -61,7 +64,7 @@ class IntegrationController extends Controller
                 if ($file->name == 'audio_file') {
                     $fileName = explode('/', $file->path);
                     $audioFile->fileName = $fileName[count($fileName) - 1];
-                    $audioFile->filePath = $file->path;
+                    $audioFile->filePath = $this->addUrlFile($file->path);
                 }
             });
 
@@ -99,7 +102,7 @@ class IntegrationController extends Controller
             return $data;
         });
 
-        $date = new \DateTime('now');
+        $date = new DateTime('now');
 
         $fileContents = [
             '$schema'    => './work_schema.json',
@@ -137,6 +140,7 @@ class IntegrationController extends Controller
         ]);
     }
 
+   
     public function importWorks(Request $request)
     {
         if (!$request->hasFile('file')) {
@@ -146,7 +150,19 @@ class IntegrationController extends Controller
         $contents = $request->file('file')->get();
         $contents = json_decode($contents);
 
-        if ($contents->fileHeader->receivingAgency != '128') {
+       
+
+        /***
+         *  Author: Alejandro Sagula
+         *  Date: 15/08/2023
+         *  Desc: Someone ask to change the value 061 instead of 128, I don't know why.
+         */
+
+        //  if ($contents->fileHeader->receivingAgency != '128') {
+        //     abort(400);
+        //     }
+
+        if ($contents->fileHeader->receivingAgency != '061') {
             abort(400);
         }
 
@@ -158,7 +174,7 @@ class IntegrationController extends Controller
 
         foreach($contents->acknowledgements as $ack) {
             // Si no es alta, omitimos el registro
-            if ($ack->originalTransactionType != 'AddWork') {
+            if ($ack->originalTransactionType != 'addWork') {
                 $events[] = "Respuesta $ack->submissionId omitida porque no es un alta";
                 $stats['failure']++;
                 continue;
@@ -180,7 +196,7 @@ class IntegrationController extends Controller
                 continue;
             }
 
-            if ($ack->transactionStatus == 'FullyAccepted') {
+            if ($ack->transactionsStatus == 'FullyAccepted') {
                 $work->status_id = 8; // Aprobado
                 $work->approved = true;
                 $work->codwork = $ack->codworkSq;
@@ -332,7 +348,7 @@ class IntegrationController extends Controller
             return $data;
         });
 
-        $date = new \DateTime('now');
+        $date = new DateTime('now');
 
         // Preparamos el resto del contenido del archivo
         $fileContents = $jingles_data;
@@ -385,7 +401,7 @@ class IntegrationController extends Controller
             return $data;
         });
 
-        $date = new \DateTime('now');
+        $date = new DateTime('now');
 
         // Parseamos el contenido del archivo
         $fileContents = $members_data;

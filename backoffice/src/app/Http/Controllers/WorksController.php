@@ -23,7 +23,7 @@ class WorksController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->middleware('datatables')->only('datatables');
     }
 
@@ -104,9 +104,9 @@ class WorksController extends Controller
             $path = explode('/', $request->input('file'));
             if ($path[0] != 'files') abort(403);
 
-            if (!Auth::user()->can('nb_obras', 'lee')) {
-                abort(403);
-            }
+            // if (!Auth::user()->can('nb_obras', 'lee')) {
+            //     abort(403);
+            // }
 
             if (!Storage::exists($request->input('file'))) {
                 abort(404);

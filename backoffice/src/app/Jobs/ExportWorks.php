@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
+use App\Traits\FileTrait;
+
 class ExportWorks implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
+    use FileTrait;
     public function __construct()
     {
         //
@@ -54,7 +56,7 @@ class ExportWorks implements ShouldQueue
                     if ($file->name == 'lyric_file') {
                         return [
                             'fileName' => $file->name,
-                            'filePath' => $file->path
+                            'filePath' => $this->addUrlFile($file->path)
                         ];
                     }
                 });
@@ -63,7 +65,7 @@ class ExportWorks implements ShouldQueue
                     if ($file->name == 'audio_file') {
                         return [
                             'fileName' => $file->name,
-                            'filePath' => $file->path
+                            'filePath' => $this->addUrlFile($file->path)
                         ];
                     }
                 });
@@ -71,6 +73,13 @@ class ExportWorks implements ShouldQueue
                 $work->status_id = 7; // En Procesamiento Interno
                 $work->save();
 
+                /**
+                 *  Add this lines
+                 */
+                $unpublishedDate = ($work->dnda_in_date) ? (new DateTime($work->dnda_in_date))->format('Y-m-d') : null;
+                $editedDate = ($work->dnda_ed_date) ? (new DateTime($work->dnda_ed_date))->format('Y-m-d') : null;
+            
+        
                 $data = [
                     'submissionId'      => $work->id,
                     'agency'            => '128',
@@ -82,10 +91,10 @@ class ExportWorks implements ShouldQueue
                     'musicMovies'       => $work->is_movie == 1 ? 'S' : 'N',
                     'unpublishedDndaNumberLetter' => $work->lyric_dnda_in_file,
                     'unpublishedDndaNumberMusic' => $work->audio_dnda_in_file,
-                    'unpublishedDate' => $work->dnda_in_date,
+                    'unpublishedDate' => $unpublishedDate,
                     'editedDndaNumberLetter' => $work->lyric_dnda_ed_file,
                     'editedDndaNumberMusic' => $work->audio_dnda_ed_file,
-                    'editedDate' => $work->dnda_ed_date,
+                    'editedDate' => $editedDate,
                     'interestedParties' => $interestedParties,
                     'sheetMusicFile' => $sheetMusicFile,
                     'audioFile' => $audioFile

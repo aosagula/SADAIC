@@ -132,7 +132,7 @@ event.preventDefault();
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/login.js */"./resources/js/login.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/login.js */"./resources/js/login.js");
 
 
 /***/}

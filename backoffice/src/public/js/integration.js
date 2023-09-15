@@ -150,7 +150,7 @@ window.location='/integration/members';
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/integration.js */"./resources/js/integration.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/integration.js */"./resources/js/integration.js");
 
 
 /***/}

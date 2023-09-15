@@ -1,0 +1,48 @@
+{
+    "$schema": "./work_schema.json",
+    "fileHeader": {
+        "submittingAgency": "128",
+        "fileCreationDateTime": "2019-10-01T18:25:43.511Z",
+        "receivingAgency": "061"
+    }
+    "addWorks": [
+        {
+            "submissionId": 1,
+            "agency": "128",
+            "originalTitle": "PRIMERA OBRA",
+			"albumTitle": "TITULO DE ALBUM",
+			"genre": "100",
+			"duration": "0120",
+			"jingle": "S",
+			"musicMovies": "N",
+			"unpublishedDndaNumberLetter": 111111,
+			"unpublishedDndaNumberMusic": 222222,
+			"unpublishedDate": "2020-11-24",
+			"editedDndaNumberLetter": 333333,
+			"editedDndaNumberMusic": 4444444,
+			"editedDate": "2019-01-01",
+            "interestedParties": [
+                {
+                    "nameNumber": 375001590,
+                    "role": "CA",
+					"porcentPer": "05000",
+					"porcentMec": "05000",
+					"porcentSyn": "05000"
+                },
+                    "nameNumber": 380001600,
+                    "role": "E",
+					"porcentPer": "05000",
+					"porcentMec": "05000",
+					"porcentSyn": "05000"
+            ],
+			"sheetMusicFile": {
+				"fileName": "PARTITURA OBRA 1.PDF",
+				"filePath": "C:\PARTITURAS\"
+			},
+			"audioFile": {
+				"fileName": "AUDIO OBRA 1.MP3",
+				"filePath": "C:\AUDIOS_MP3\"
+			}
+        }
+    ]
+}

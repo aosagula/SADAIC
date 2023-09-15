@@ -51,8 +51,17 @@ class ImportWorks implements ShouldQueue
                 Log::channel('sync')->error("Importación no iniciada: Formato no soportado (no acknowledgements)");
                 return 0;
             }
+            /***
+             *  Author: Alejandro Sagula
+             *  Date: 15/08/2023
+             *  Desc: Someone ask to change the value 061 instead of 128, I don't know why.
+             */
+            // if ($contents->fileHeader->receivingAgency != '128') {
+            //     Log::channel('sync')->error("Importación fallida: N° de agencia erróneo");
+            //     throw new Exception("Importación fallida: N° de agencia erróneo");
+            // }
 
-            if ($contents->fileHeader->receivingAgency != '128') {
+            if ($contents->fileHeader->receivingAgency != '061') {
                 Log::channel('sync')->error("Importación fallida: N° de agencia erróneo");
                 throw new Exception("Importación fallida: N° de agencia erróneo");
             }

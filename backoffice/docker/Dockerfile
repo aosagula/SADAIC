@@ -13,9 +13,10 @@ RUN npm run production
 
 # Laravel
 
-#FROM php:7.3-fpm-alpine3.12
+FROM php:7.3-fpm-alpine3.12
 
-FROM php:7.4.33-fpm-alpine3.15
+#FROM php:7.4.33-fpm-alpine3.15
+#FROM php:7.4-fpm
 
 # Copy composer.lock and composer.json
 COPY src/composer.lock src/composer.json /var/www/
@@ -40,6 +41,8 @@ RUN apk --update --no-cache add \
     gifsicle \
     unzip \
     pcre-dev
+    # \
+    #oniguruma-dev
 
 # Install extensions
 RUN docker-php-ext-configure intl \
@@ -52,10 +55,23 @@ ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS="0"
 
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl opcache
 
+#RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
+
 RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 
 RUN docker-php-ext-install gd
 
+#xdebug-3.1.6.tgz
+
+# RUN pecl install -o -f xdebug-3.1.6 \
+#      && docker-php-ext-enable xdebug
+RUN apk add --no-cache --update --virtual buildDeps autoconf \
+    && pecl install xdebug-3.1.6 \
+    && docker-php-ext-enable xdebug \
+    && apk del buildDeps
+
+#COPY docker/php/local.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+COPY ./docker/php/99-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -65,7 +81,9 @@ RUN addgroup -g 1000 www
 RUN adduser --disabled-password --no-create-home -u 1000 -G www www
 
 # Copy existing application directory contents
-COPY --chown=www:www --from=nodebuild /app /var/www
+COPY --chown=www:www --from=nodebuild /app /var/www 
+
+RUN chown www:www /tmp/xdebug.log
 
 RUN COMPOSER_MEMORY_LIMIT=-1 /usr/bin/composer install --prefer-dist --no-scripts
 

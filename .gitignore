@@ -1,5 +1,5 @@
 vendor
-docker-compose.*
+#docker-compose.*
 node_modules
 storage\framework\cache
 

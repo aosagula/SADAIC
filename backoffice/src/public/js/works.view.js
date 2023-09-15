@@ -251,7 +251,7 @@ toastr.error('Se encontró un problema mientras se guardaban las observaciones')
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/works.view.js */"./resources/js/works.view.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/works.view.js */"./resources/js/works.view.js");
 
 
 /***/}

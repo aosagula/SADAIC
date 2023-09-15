@@ -37,7 +37,8 @@ RUN apk --update --no-cache add \
     pngquant \
     gifsicle \
     unzip \
-    pcre-dev
+    pcre-dev \
+    oniguruma-dev
 
 # Install extensions
 RUN docker-php-ext-configure intl \

@@ -154,7 +154,7 @@ $dt.column('status_id:name').search(event.target.value).draw();
 /*! no static exports found */
 /***/function _(module,exports,__webpack_require__){
 
-module.exports=__webpack_require__(/*! /app/resources/js/jingles.index.js */"./resources/js/jingles.index.js");
+module.exports=__webpack_require__(/*! /mnt/c/xampp/htdocs/sada/SADAIC/backoffice/src/resources/js/jingles.index.js */"./resources/js/jingles.index.js");
 
 
 /***/}

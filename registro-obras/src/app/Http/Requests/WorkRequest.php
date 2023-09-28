@@ -21,15 +21,15 @@ class WorkRequest extends FormRequest
     {
         return [
             'title'               => 'required',
-            'dnda_title'          => 'required',
+            // 'dnda_title'          => 'required',
             'genre_id'            => 'integer|required',
             'duration'            => 'string|required',
 
-            'dnda_ed_date'        => 'date|nullable',
+            'dnda_ed_date'        => 'date|nullable|before:tomorrow',
             'audio_dnda_ed_file'  => 'string|nullable',
             'lyric_dnda_ed_file'  => 'string|nullable',
 
-            'dnda_in_date'        => 'date|nullable',
+            'dnda_in_date'        => 'date|nullable|before:tomorrow',
             'audio_dnda_in_file'  => 'string|nullable',
             'lyric_dnda_in_file'  => 'string|nullable',
 
@@ -104,7 +104,10 @@ class WorkRequest extends FormRequest
             'people.*.phone_country.required_if'    => 'Todos los derechohabientes que no sean socios tienen que tener indicado el número de teléfono',
             'people.*.phone_number.required_if'     => 'Todos los derechohabientes que no sean socios tienen que tener indicado el número de teléfono',
             'people.*.street_name.required_if'      => 'Todos los derechohabientes que no sean socios tienen que tener indicado la dirección',
-            'people.*.street_number.required_if'    => 'Todos los derechohabientes que no sean socios tienen que tener indicado la dirección'
+            'people.*.street_number.required_if'    => 'Todos los derechohabientes que no sean socios tienen que tener indicado la dirección',
+            'dnda_ed_date.before'          => 'Fecha Editada debe ser inferior o igual a la actual',
+            'dnda_in_date.before'          => 'Fecha Inédita debe ser inferior o igual a la actual'
+            
         ];
     }
 

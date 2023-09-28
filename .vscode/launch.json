@@ -13,6 +13,16 @@
             "pathMappings": {
                 "/var/www": "${workspaceFolder}/backoffice/src"
             }
+        },
+        {
+            "name": "Registro de Obras for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "hostname": "0.0.0.0",
+            "pathMappings": {
+                "/var/www": "${workspaceFolder}/registro-obras/src"
+            }
         }
     ]
 }

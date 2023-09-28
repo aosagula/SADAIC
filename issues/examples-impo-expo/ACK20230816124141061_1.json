@@ -9,58 +9,21 @@
         {
             "submissionId": 8126080,
             "originalFileCreationDateTime": "2023-08-16T10:14:51.913756-03",
-            "originalSubmissionId": 5,
+            "originalSubmissionId": 49,
             "originalTransactionType": "addWork",
             "agency": "061",
-            "codworkSq": 2082239,
-            "originalTitle": "OBRA 1 CON DIEGO RODRIGUEZ",
+            "codworkSq": 1111111,
+            "originalTitle": "Prueba de id en archivo",
             "processingDateTime": "2023-08-16 12:41:41.558384",
             "transactionsStatus": "FullyAccepted",
             "interestedParties": [
-                {
-                    "nameNumber": 260370983,
-                    "name": "CESCHI FELIX OMAR",
-                    "role": "CA",
-                    "porcentPer": "05000",
-                    "porcentMec": "05000",
-                    "porcentSyn": "05000"
-                },
-                {
-                    "nameNumber": 261474274,
-                    "name": "PAYAGUALA HECTOR OSCAR",
-                    "role": "CA",
-                    "porcentPer": "05000",
-                    "porcentMec": "05000",
-                    "porcentSyn": "05000"
-                }
-            ]
-        },
-        {
-            "submissionId": 8126081,
-            "originalFileCreationDateTime": "2023-08-16T10:14:51.913756-03",
-            "originalSubmissionId": 17,
-            "originalTransactionType": "addWork",
-            "agency": "061",
-            "codworkSq": 2082240,
-            "originalTitle": "OBRA 4 SOL",
-            "processingDateTime": "2023-08-16 12:41:41.637526",
-            "transactionsStatus": "FullyAccepted",
-            "interestedParties": [
-                {
-                    "nameNumber": 243071697,
-                    "name": "FALU ALFREDO JUAN",
-                    "role": "CA",
-                    "porcentPer": "07500",
-                    "porcentMec": "02500",
-                    "porcentSyn": "02500"
-                },
-                {
-                    "nameNumber": 260128891,
-                    "name": "CASTRO JOSE MIGUEL",
-                    "role": "CA",
-                    "porcentPer": "02500",
-                    "porcentMec": "07500",
-                    "porcentSyn": "07500"
+               {
+                    "nameNumber": 261862362,
+                    "name": "Goyburn Mathias",
+                    "role": "A",
+                    "porcentPer": 10000,
+                    "porcentMec": 10000,
+                    "porcentSyn": 10000
                 }
             ]
         }

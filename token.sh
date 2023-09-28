@@ -1,0 +1,1 @@
+git remote set-url origin https://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@github.com/aosagula/SADAIC.git

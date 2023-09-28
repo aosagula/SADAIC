@@ -32,7 +32,7 @@
 </div>
 
 <div class="form-group">
-    <label for="dnda_title">Título Álbum *</label>
+    <label for="dnda_title">Título Álbum</label>
     <input type="text" class="form-control" name="dnda_title" id="dnda_title" value="{{ old('dnda_title') }}">
 </div>
 
@@ -63,7 +63,7 @@
     </div>
     <div class="form-group col-md-4">
         <label for="dnda_in_date">Fecha Inédita</label>
-        <input type="date" placeholder="__/__/____" class="form-control" name="dnda_in_date" id="dnda_in_date" max="9999-12-31">
+        <input type="date" placeholder="__/__/____" class="form-control" name="dnda_in_date" id="dnda_in_date" max="{{ now()->format('Y-m-d') }}">
     </div>
 </div>
 
@@ -78,6 +78,6 @@
     </div>
     <div class="form-group col-md-4">
         <label for="dnda_ed_date">Fecha Editada</label>
-        <input type="date" placeholder="__/__/____" class="form-control" name="dnda_ed_date" id="dnda_ed_date" max="9999-12-31">
+        <input type="date" placeholder="__/__/____" class="form-control" name="dnda_ed_date" id="dnda_ed_date" max="{{ now()->format('Y-m-d') }}">
     </div>
 </div>

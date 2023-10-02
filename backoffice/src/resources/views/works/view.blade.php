@@ -54,6 +54,11 @@
                 <td>{{ optional($registration->status)->name }}</td>
             </tr>
             <tr>
+                <th>Archivo Exportado</th>
+                <td><a href="{{ route('work.re_export', ['id' => $registration->id ]) }}">
+                    {{ $registration->export_filename }}</a></td>
+            </tr>
+            <tr>
                 <th>Iniciador</th>
                 @if ($registration->member_id)
                 <td>{{ $registration->initiator->full_name }} (Socio n° {{ $registration->initiator->member_id }}/{{ $registration->initiator->heir }})</td>

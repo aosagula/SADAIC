@@ -39811,3 +39811,8 @@ section.content {
   height: 10rem;
 }
 
+.import-error-message {
+  color: red;
+  font-size: 12px;
+}
+

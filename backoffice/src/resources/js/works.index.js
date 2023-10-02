@@ -15,6 +15,7 @@ const $dt = $('.table').DataTable({
         url: '/localisation/datatables.json'
     },
     serverSide: true,
+    
     columns: [
         {
             class:          'details-control',
@@ -27,7 +28,9 @@ const $dt = $('.table').DataTable({
         { name: 'has_editor', data: (row) => row.has_editor ? 'Si' : 'No' },
         { name: 'is_jingle', data: (row) => row.is_jingle ? 'Si' : 'No' },
         { name: 'is_movie', data: (row) => row.is_movie ? 'Si' : 'No' },
-        { name: 'status_id', data: (row) => row.codwork ? row.status.name + '<br>' + row.codwork : row.status.name},
+        { name: 'status_id', data: (row) => (row.export_filename && row.status_id == 6)?row.status.name + '<br>'+'<p style="font-size:12px;">' + row.export_filename + '</p>':row.status.name },
+        { name: 'codwork', data: (row) => row.codwork ? row.codwork: '-'},
+        
         {
             orderable: false,
             data:      null,

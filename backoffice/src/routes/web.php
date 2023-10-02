@@ -53,6 +53,7 @@ Route::middleware(['web','auth'])->group(function () {
 
     Route::get('/integration', 'IntegrationController@index');
     Route::get('/integration/works', 'IntegrationController@exportWorks');
+    Route::get('/integration/works_re_export/{id}', 'IntegrationController@re_export')->name('work.re_export');
     Route::get('/integration/jingles', 'IntegrationController@exportJingles');
     Route::get('/integration/members', 'IntegrationController@exportMembers');
     Route::post('/integration/works', 'IntegrationController@importWorks');

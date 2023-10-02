@@ -141,7 +141,12 @@ return row.is_movie?'Si':'No';
 {
 name:'status_id',
 data:function data(row){
-return row.codwork?row.status.name+'<br>'+row.codwork:row.status.name;
+return row.export_filename&&row.status_id==6?row.status.name+'<br>'+'<p style="font-size:12px;">'+row.export_filename+'</p>':row.status.name;
+}},
+{
+name:'codwork',
+data:function data(row){
+return row.codwork?row.codwork:'-';
 }},
 {
 orderable:false,

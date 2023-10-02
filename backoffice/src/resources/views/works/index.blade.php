@@ -20,6 +20,7 @@
                     <th>Jingle</th>
                     <th>M. Película</th>
                     <th>Estado</th>
+                    <th>Código SGS</th>
                     <th></th>
                 </tr>
             </thead>

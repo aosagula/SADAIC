@@ -7,9 +7,12 @@ use App\Models\Work\Registration as WorkRegistration;
 use App\Models\Jingles\Registration as JingleRegistration;
 use App\Models\Members\Registration as MemberRegistration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 use App\Traits\FileTrait;
 use DateTime;
+use ZipArchive;
 
 class IntegrationController extends Controller
 {
@@ -24,15 +27,193 @@ class IntegrationController extends Controller
         return view('integration.index');
     }
 
+    public function exportZipFile($works){
+        
+
+        $works_data = $works->map(function(WorkRegistration $work) {
+            $interestedParties = $work->distribution->map(function(Distribution $dist) {
+                $porcentPer = str_pad($dist->public * 100, 5, '0', STR_PAD_LEFT);
+                $porcentMec = str_pad(strval($dist->mechanic * 100), 5, '0', STR_PAD_LEFT);
+                $porcentSyn = str_pad(strval($dist->sync * 100), 5, '0', STR_PAD_LEFT);
+
+                return [
+                    'nameNumber' => $dist->type == 'member' ? $dist->member->ipname : 99999999999,
+                    'name'       => $dist->type == 'member' ? ucwords(strtolower(optional($dist->member)->nombre)) : $dist->meta->name,
+                    'role'       => $dist->fn,
+                    'porcentPer' => (string) $porcentPer,
+                    'porcentMec' => (string) $porcentMec,
+                    'porcentSyn' => (string) $porcentSyn
+                ];
+            });
+
+            $sheetMusicFile = new \stdClass();
+            $audioFile = new \stdClass();
+
+            $work->files->map(function($file) use ($sheetMusicFile) {
+                if ($file->name == 'lyric_file') {
+                    $fileName = explode('/', $file->path);
+                    $sheetMusicFile->fileName = $fileName[count($fileName) - 1];
+                    $sheetMusicFile->filePath = $this->addUrlFile($file->path);
+                }
+            });
+
+            $work->files->map(function($file) use ($audioFile) {
+                if ($file->name == 'audio_file') {
+                    $fileName = explode('/', $file->path);
+                    $audioFile->fileName = $fileName[count($fileName) - 1];
+                    $audioFile->filePath = $this->addUrlFile($file->path);
+                }
+            });
+
+            /**
+             *  Add this lines
+             */
+            $unpublishedDate = ($work->dnda_in_date) ? (new DateTime($work->dnda_in_date))->format('Y-m-d') : null;
+            $editedDate = ($work->dnda_ed_date) ? (new DateTime($work->dnda_ed_date))->format('Y-m-d') : null;
+            
+        
+
+            $data = [
+                'submissionId'      => $work->id,
+                'agency'            => '128',
+                'originalTitle'     => $work->title,
+                'otherTitles'       =>  $work->titles->map(function($t){
+                    return $t->title;
+                }),
+                'albumTitle'        => $work->dnda_title,
+                'genre'             => $work->genre_id,
+                'duration'          => $work->duration,
+                'jingle'            => $work->is_jingle == 1 ? 'S' : 'N',
+                'musicMovies'       => $work->is_movie == 1 ? 'S' : 'N',
+                'unpublishedDndaNumberLetter' => intval($work->lyric_dnda_in_file),
+                'unpublishedDndaNumberMusic' => intval($work->audio_dnda_in_file),
+                'unpublishedDate' => $unpublishedDate , #$work->dnda_in_date,
+                'editedDndaNumberLetter' => intval($work->lyric_dnda_ed_file),
+                'editedDndaNumberMusic' => intval($work->audio_dnda_ed_file),
+                'editedDate' =>  $editedDate, # $work->dnda_ed_date,
+                'interestedParties' => $interestedParties,
+                'sheetMusicFile' => $sheetMusicFile,
+                'audioFile' => $audioFile
+            ];
+
+            return $data;
+        });
+
+        // Directorio temporal para almacenar los archivos
+        $tempDir = storage_path('temp');
+        if (!is_dir($tempDir)) {
+            mkdir($tempDir, 0755, true);
+        }
+        $date = new DateTime('now');
+        $zipFile = $tempDir.'/works'.$date->format('Y-m-d\TH:i:s').'.zip';
+        $zip = new ZipArchive();
+
+        foreach ( $works_data as $work){
+            $date = new DateTime('now');
+            $dt = $date->format('Y-m-d\TH:i:s.uT');
+            $dtf = $date->format('Y-m-d\TH:i:s');
+            $fileContents = [
+                '$schema'    => './work_schema.json',
+                'fileHeader' => [
+                    'submittingAgency'     => '128',
+                    'fileCreationDateTime' => $dt,
+                    'receivingAgency'      => '061'
+                ],
+                'addWorks' => $work
+            ];
+
+            $fileName = 'work-'.$work['submissionId'].'-';
+            $fileName .= $dtf;
+            $fileName .= '-128-061-registros.json';
+
+
+            $headers = [
+                'X-Accel-Buffering' => 'no',
+                'Content-Encoding' => 'utf-8',
+                'Content-Type'     => 'application/json',
+                'Content-Disposition' => 'attachment; filename=' . $fileName,
+            ];
+            $output = json_encode($fileContents, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+            $patterns = [
+                '/("nameNumber"): "(\d*)"/m',
+                '/("porcentPer"): "(\d*)"/m',
+                '/("porcentMec"): "(\d*)"/m',
+                '/("porcentSyn"): "(\d*)"/m',
+            ];
+
+            $output = preg_replace($patterns, '${1}: ${2}', $output);
+
+            file_put_contents($tempDir . '/' . $fileName, $output);
+            
+            // 
+         
+        }
+        if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+
+            $archivos = scandir($tempDir);
+            foreach ($archivos as $archivo) {
+                if ($archivo !== '.' && $archivo !== '..') {
+                    $zip->addFile($tempDir . '/' . $archivo, $archivo);
+                }
+            }
+            $zip->close();
+        }
+
+        // Elimina los archivos temporales
+        foreach ($archivos as $archivo) {
+            if ($archivo !== '.' && $archivo !== '..') {
+                if ( File::extension($archivo) == 'json'){
+                    $work_id = explode ( '-', $archivo)[1];
+                    $this->saveExportFilename( $work_id, $archivo, $dt);
+                }
+                
+                unlink($tempDir . '/' . $archivo);
+            }
+        }
+
+        // Descarga el archivo ZIP
+        return response()->download($zipFile)->deleteFileAfterSend(true);
+
+        
+    }
     /**
      *  2023.08.28 - Alejandro Sagula
      *  Add new attribute called otherTitles, 
      *  an array with subtitles when exists
+     * 
+     *  2023.09.28 - Alejandro Sagula
+     *  export each work as a single json file, if there is more than one work 
+     *  the download is ziped with all works, 
+     *  if there is 1 the json file is generated without zip
+     * 
+     *  each file name is store in each work in the data base. 
+     *  The export will download a file only if the work dosent have a filename linked.
+     * 
      */
     public function exportWorks()
     {
-        $works = WorkRegistration::where('status_id', 6)->with('titles')->get();
+        $works = WorkRegistration::where('status_id', 6)
+                                    ->where( function($query) {
+                                        $query->whereNull('export_filename')
+                                              ->orWhere('export_filename', '');
+                                    })
+                                    
+                                    ->with('titles')
+                                    ->get();
         
+        Session::forget('integration_error');
+        if ($works->count() > 1){
+            return $this->exportZipFile($works);
+        }
+        elseif($works->count() == 1) {
+            return $this->exportSingleFile($works);
+        }
+        else{
+            return back()->with(['integration_error' => 'No hay obras en Estado Para enviar a Procesamiento Interno']);
+        }
+    }
+
+    public function exportSingleFile($works){
         $works_data = $works->map(function(WorkRegistration $work) {
             $interestedParties = $work->distribution->map(function(Distribution $dist) {
                 $porcentPer = str_pad($dist->public * 100, 5, '0', STR_PAD_LEFT);
@@ -103,21 +284,23 @@ class IntegrationController extends Controller
         });
 
         $date = new DateTime('now');
-
+        $dt = $date->format('Y-m-d\TH:i:s.uT');
+        $dtf = $date->format('Y-m-d\TH:i:s');
         $fileContents = [
             '$schema'    => './work_schema.json',
             'fileHeader' => [
                 'submittingAgency'     => '128',
-                'fileCreationDateTime' => $date->format('Y-m-d\TH:i:s.uT'),
+                'fileCreationDateTime' => $dt,
                 'receivingAgency'      => '061'
             ],
             'addWorks' => $works_data
         ];
 
-        $fileName = 'work-';
-        $fileName .= $date->format('Y-m-d\TH:i:s');
+        $fileName = 'work-'.$works_data->first()['submissionId'].'-';
+        $fileName .= $dtf;
         $fileName .= '-128-061-registros.json';
 
+        $this->saveExportFilename( $works_data->first()['submissionId'], $fileName, $dt);
         return response()->streamDownload(function() use ($fileContents) {
             $output = json_encode($fileContents, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 
@@ -140,7 +323,135 @@ class IntegrationController extends Controller
         ]);
     }
 
+
+    /**
+     *  2023.10.01: Alejandro Sagula
+     *  Save export filename for each work exported.
+     */
+    private function saveExportFilename($work_id, $export_filename, $dt){
+        $work = WorkRegistration::find($work_id);
+        $work->export_filename = $export_filename;
+        $work->export_datetime = $dt;
+        $work->save();
+    }
    
+
+    /**
+     * 2023.10.02: Alejandro Sagula
+     * Reexport file
+     * 
+     */
+    public function re_export( Request $request){
+        
+        $works = WorkRegistration::where('id',$request->id)->with('titles')->get();
+        $works_data = $works->map(function(WorkRegistration $work) {
+            $interestedParties = $work->distribution->map(function(Distribution $dist) {
+                $porcentPer = str_pad($dist->public * 100, 5, '0', STR_PAD_LEFT);
+                $porcentMec = str_pad(strval($dist->mechanic * 100), 5, '0', STR_PAD_LEFT);
+                $porcentSyn = str_pad(strval($dist->sync * 100), 5, '0', STR_PAD_LEFT);
+
+                return [
+                    'nameNumber' => $dist->type == 'member' ? $dist->member->ipname : 99999999999,
+                    'name'       => $dist->type == 'member' ? ucwords(strtolower(optional($dist->member)->nombre)) : $dist->meta->name,
+                    'role'       => $dist->fn,
+                    'porcentPer' => (string) $porcentPer,
+                    'porcentMec' => (string) $porcentMec,
+                    'porcentSyn' => (string) $porcentSyn
+                ];
+            });
+
+            $sheetMusicFile = new \stdClass();
+            $audioFile = new \stdClass();
+
+            $work->files->map(function($file) use ($sheetMusicFile) {
+                if ($file->name == 'lyric_file') {
+                    $fileName = explode('/', $file->path);
+                    $sheetMusicFile->fileName = $fileName[count($fileName) - 1];
+                    $sheetMusicFile->filePath = $this->addUrlFile($file->path);
+                }
+            });
+
+            $work->files->map(function($file) use ($audioFile) {
+                if ($file->name == 'audio_file') {
+                    $fileName = explode('/', $file->path);
+                    $audioFile->fileName = $fileName[count($fileName) - 1];
+                    $audioFile->filePath = $this->addUrlFile($file->path);
+                }
+            });
+
+            /**
+             *  Add this lines
+             */
+            $unpublishedDate = ($work->dnda_in_date) ? (new DateTime($work->dnda_in_date))->format('Y-m-d') : null;
+            $editedDate = ($work->dnda_ed_date) ? (new DateTime($work->dnda_ed_date))->format('Y-m-d') : null;
+            
+        
+
+            $data = [
+                'submissionId'      => $work->id,
+                'agency'            => '128',
+                'originalTitle'     => $work->title,
+                'otherTitles'       =>  $work->titles->map(function($t){
+                    return $t->title;
+                }),
+                'albumTitle'        => $work->dnda_title,
+                'genre'             => $work->genre_id,
+                'duration'          => $work->duration,
+                'jingle'            => $work->is_jingle == 1 ? 'S' : 'N',
+                'musicMovies'       => $work->is_movie == 1 ? 'S' : 'N',
+                'unpublishedDndaNumberLetter' => intval($work->lyric_dnda_in_file),
+                'unpublishedDndaNumberMusic' => intval($work->audio_dnda_in_file),
+                'unpublishedDate' => $unpublishedDate , #$work->dnda_in_date,
+                'editedDndaNumberLetter' => intval($work->lyric_dnda_ed_file),
+                'editedDndaNumberMusic' => intval($work->audio_dnda_ed_file),
+                'editedDate' =>  $editedDate, # $work->dnda_ed_date,
+                'interestedParties' => $interestedParties,
+                'sheetMusicFile' => $sheetMusicFile,
+                'audioFile' => $audioFile
+            ];
+
+            return $data;
+        });
+
+        $dt = $works->first()['export_datetime'];
+        
+
+        $fileContents = [
+            '$schema'    => './work_schema.json',
+            'fileHeader' => [
+                'submittingAgency'     => '128',
+                'fileCreationDateTime' => $dt,
+                'receivingAgency'      => '061'
+            ],
+            'addWorks' => $works_data
+        ];
+
+        $fileName = $works->first()['export_filename'];
+
+        
+        return response()->streamDownload(function() use ($fileContents) {
+            $output = json_encode($fileContents, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+
+            // Transformar los strings que representan números con leading zeros a
+            // "números" con leading zeros. Se hace de forma manual porque el estandar
+            // de JSON no soporta leading zeros para los números
+            $patterns = [
+                '/("nameNumber"): "(\d*)"/m',
+                '/("porcentPer"): "(\d*)"/m',
+                '/("porcentMec"): "(\d*)"/m',
+                '/("porcentSyn"): "(\d*)"/m',
+            ];
+
+            $output = preg_replace($patterns, '${1}: ${2}', $output);
+
+            echo $output;
+        }, $fileName, [
+            'Content-Encoding' => 'utf-8',
+            'Content-Type'     => 'application/json'
+        ]);
+    }
+
+
     public function importWorks(Request $request)
     {
         if (!$request->hasFile('file')) {

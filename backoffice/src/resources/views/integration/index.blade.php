@@ -1,6 +1,7 @@
 @extends('dashboard.layout')
 
 @section('content')
+
 <div class="container">
     <section class="content-header">
         <div class="row mb-2">
@@ -14,7 +15,11 @@
             <h3 class="col-3">Registros de Obras</h3>
             <div id="exportWorksWrapper" class="col-2">
                 <button type="button" class="btn btn-danger w-100" id="exportWorks">Exportar</button>
+                @if(session()->has('integration_error'))
+                <p class="import-error-message">{{session()->get('integration_error')}}</p>
+                @endif
             </div>
+            
             <div class="col-1"></div>
             <div id="importWorksWrapper" class="col-2">
                 <button type="button" class="btn btn-warning w-100" id="importWorks">Importar</button>

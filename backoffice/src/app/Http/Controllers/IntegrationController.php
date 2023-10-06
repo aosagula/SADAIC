@@ -202,12 +202,14 @@ class IntegrationController extends Controller
                                     ->get();
         
         Session::forget('integration_error');
-        if ($works->count() > 1){
-            return $this->exportZipFile($works);
-        }
-        elseif($works->count() == 1) {
+        // if ($works->count() > 1){
+        //     return $this->exportZipFile($works);
+        // }
+        // elseif($works->count() == 1) {
+        //     return $this->exportSingleFile($works);
+        // }
+        if ($works->count()> 0)
             return $this->exportSingleFile($works);
-        }
         else{
             return back()->with(['integration_error' => 'No hay obras en Estado Para enviar a Procesamiento Interno']);
         }
@@ -296,11 +298,16 @@ class IntegrationController extends Controller
             'addWorks' => $works_data
         ];
 
-        $fileName = 'work-'.$works_data->first()['submissionId'].'-';
+        $fileName = 'work-';
         $fileName .= $dtf;
         $fileName .= '-128-061-registros.json';
 
-        $this->saveExportFilename( $works_data->first()['submissionId'], $fileName, $dt);
+
+        foreach($works_data as $work){
+            $this->saveExportFilename( $work['submissionId'], $fileName, $dt);
+        }
+        //
+
         return response()->streamDownload(function() use ($fileContents) {
             $output = json_encode($fileContents, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 

@@ -144,8 +144,13 @@ window.maxFileUploadSizeFormatted = '{{ $max_size }}';
 <script>
     window.roleOptions = @json($roles);
     window.citiesOptions = @json($cities);
-
+</script>
+<script>
     $('#genre_id').change();
+    
+   
+    // Set default 
+    customStorage.setField('is_jingle', 3);
     @if (Auth::user()->type == 'member' && Auth::user()->sadaic)
     $distributionTable.row.add([
         selectFn('fn', true),
